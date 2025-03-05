@@ -32,7 +32,7 @@
       real, intent(inout), dimension(ibmyj:iemyj,jbmyj:jemyj) :: z0base
 
       integer :: i,j,k,l
-      real :: x1,x2,xcoast,borninthenorth,borninthesouth
+      real :: x1,x2,xcoast,upnorth,downsouth
 
 !-----------------------------------------------------------------------
 !  BEGIN user settings
@@ -130,7 +130,7 @@
       ELSEIF( initsfc.eq.5 )THEN
 
         xcoast = minx + 0.5*(maxx-minx)
-		borninthenorth = miny + 0.8*(maxy-miny)
+		upnorth = miny + 0.8*(maxy-miny)
 
         do j=jb,je
         do i=ib,ie
@@ -160,8 +160,8 @@
 
       ELSEIF( initsfc.eq.6 )THEN
 
-		borninthenorth = miny + 0.66666666666666*(maxy-miny)
-		borninthesouth = miny + 0.33333333333333*(maxy-miny)
+		upnorth = miny + 0.66666666666666*(maxy-miny)
+		downsouth = miny + 0.33333333333333*(maxy-miny)
 		xcoast = minx + 0.33333333333333*(maxx-minx)
 
         do j=jb,je
