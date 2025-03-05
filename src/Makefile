@@ -59,10 +59,10 @@ LINKOPTS  = -lnetcdf -lnetcdff
 #DM   = -DMPI
 #-----------------------------------------------------------------------------
 #  multiple processors, shared memory (OpenMP), NVIDIA (formerly Portland Group) compiler
-FC   = nvfortran
-OPTS = -Mfree -O3 -Ktrap=none -Mautoinline -Minline=reshape -mp
-CPP  = cpp -C -P -traditional -Wno-invalid-pp-token -ffreestanding
-OMP  = -DOPENMP
+#FC   = nvfortran
+#OPTS = -Mfree -O3 -Ktrap=none -Mautoinline -Minline=reshape -mp
+#CPP  = cpp -C -P -traditional -Wno-invalid-pp-token -ffreestanding
+#OMP  = -DOPENMP
 #-----------------------------------------------------------------------------
 #  single processor, GNU compiler
 #FC   = gfortran
