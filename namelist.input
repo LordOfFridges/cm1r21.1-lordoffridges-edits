@@ -12,8 +12,8 @@
  /
 
  &param1
- dx     =  40000.0,
- dy     =  40000.0,
+ dx     =  1000.0,
+ dy     =  1000.0,
  dz     =  500.0,
  dtl    =   15.00,
  timax  =  32140800.0,	! 86400 =~ 1 day, 604800 =~ 1 week, 2628000 =~ 1 month, 32140800 =~ 1 year
@@ -25,7 +25,7 @@
  /
 
  &param2
- cm1setup  =  2,
+ cm1setup  =  1,
  testcase  =  0,
  adapt_dt  =  0,
  irst      =  0,
@@ -43,7 +43,7 @@
  mdiff     =  0,
  difforder =  6,
  imoist    =  1,
- ipbl      =  5,	! Five is your favorite
+ ipbl      =  0,	! Five is my favorite
  sgsmodel  =  4,	! FOOOUUUURR
  tconfig   =  2,
  bcturbs   =  1,
@@ -98,7 +98,7 @@
  zd      = 12000.0,
  xhd     = 100000.0,
  alphobc = 10.0,
- umove   =  5.00,	! I hate trigonometry
+ umove   =  5.00,
  vmove   =  17.50,
  v_t     =      7.0,
  l_h     =    100.0,
@@ -132,7 +132,7 @@
  tsk0       = 297.039,
  tmn0       = 291.483,
  xland0     =    1.0,	! One for land, and two for ocean
- lu0        =      5,	! Use five. Sixteen for oceans
+ lu0        =      5,	! I like to use five. Sixteen for oceans
  season     =      1,
  cecd       =      1,
  pertflx    =      0,
@@ -230,7 +230,7 @@
  var40     =   6000.0, 	! Depth of forced convergence(meters) for iinit=9
  var41     =   15000.0, ! Horizontal location of forced convergence(meters)
  var42     =   50000.0,	! Vertical location of forced convergence(meters)
- var43     =   120.0,	! Time when forced convergence begins(I think, seconds)
+ var43     =   120.0,	! Time when forced convergence begins((I think), seconds)
  var44     =   200000.0,	! Horizontal location of momentum forcing(meters) for iinit=10
  var45     =   100000.0,	! Horizontal radius of momentum forcing(meters)
  var46     =   4000.0,	! Vertical radius of momentum forcing(meters)
