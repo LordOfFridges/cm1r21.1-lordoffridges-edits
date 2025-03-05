@@ -8,10 +8,10 @@
 #              (NOTE: Don't change lines 3 and 4!)
 #  Note:  you may need to remove -DNCFPLUS if you use an old version of netcdf
 #
-OUTPUTINC = -I/usr/local/include
-OUTPUTLIB = -L/usr/local/lib
-OUTPUTOPT = -DNETCDF -DNCFPLUS
-LINKOPTS  = -lnetcdf -lnetcdff
+#OUTPUTINC = -I/usr/local/include
+#OUTPUTLIB = -L/usr/local/lib
+#OUTPUTOPT = -DNETCDF -DNCFPLUS
+#LINKOPTS  = -lnetcdf -lnetcdff
 #-----------------------------------------------------------------------------
 
 
