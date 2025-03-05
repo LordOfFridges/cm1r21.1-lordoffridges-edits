@@ -19,7 +19,7 @@
 !cc   Do not change anything below here   cccccccccccccccccccccccccccccc
 !cc                                       cccccccccccccccccccccccccccccc
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-!ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+!ccccccccccccccccccccccccccccccccccccccccccccccccccccCcccccccccccccccccc
 !-----------------------------------------------------------------------
 
       integer ierr
