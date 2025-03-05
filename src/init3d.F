@@ -458,7 +458,7 @@
         zc      =  var3  ! height of center of bubble above ground (m)
         bhrad   =  var4  ! horizontal radius of bubble (m)
         bvrad   =  var5  ! vertical radius of bubble (m)
-        bptpert =  var6  ! max potential temp perturbation (K)
+        bptpert =  var6  ! max potential temp perturbation(K)
 
         ! By default, CM1 sets qv=constant at a constant height level for 
         ! this value of iinit.  If you would rather have rh=constant at 
