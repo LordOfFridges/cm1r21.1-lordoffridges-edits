@@ -83,18 +83,19 @@
 
         ELSEIF(itern.eq.2)THEN
 
-		  threshold = miny + 0.5*(maxy-miny)
+	thresholdY = miny + 0.5*(maxy-miny)
+	thresholdX = minx + 0.5*(maxx-minx)
 
         do j = jb, je
-		    do i = ib, ie
-          if (yh(j) .ge. threshold) then
-            xval = dx * (i - ni / 3)
-            zs(i,j) = 4400.0 * exp(-(xval / 325000.0)**2) * (cos(pi * xval / 60000.0)**2)
+	do i = ib, ie
+          if ( (yh(j) .ge. thresholdY) .and. (xh(i) .le. thresholdX) ) then
+            xval = dx * (i - ni / 4)
+            zs(i,j) = 4400.0 * exp(-(xval / 325000.0)**2) * (cos(pi * xval / 50000.0)**2)
           else
-            zs(i,j) = 1.0
+            zs(i,j) = 50.0
           endif
         enddo
-		    enddo
+	enddo
 
 !---------------
 !  itern = 3
