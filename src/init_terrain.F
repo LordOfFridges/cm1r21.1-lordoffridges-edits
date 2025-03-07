@@ -49,7 +49,7 @@
 
       integer :: i,j,k,irec,ii,jj
       real :: hh,aa,xval,xc,yc
-      real :: tem1,tem2,rr,angle
+      real :: tem1,tem2,rr,angle,thresholdY,thresholdX
       real, dimension(:,:), allocatable :: zs_all
 
 #ifdef MPI
