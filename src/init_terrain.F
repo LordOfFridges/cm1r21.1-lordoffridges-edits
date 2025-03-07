@@ -78,16 +78,22 @@
 
 !---------------
 !  itern = 2
-!  Schaer case  (eg, Klemp et al, 2003, MWR, pg 1229)
+!  Modified Schaer case  (eg, Klemp et al, 2003, MWR, pg 1229)
 
         ELSEIF(itern.eq.2)THEN
 
-          do j=jb,je
-          do i=ib,ie
-            xval=dx*(i-ni/2)
-            zs(i,j)=250.0*exp(-(xval/5000.0)**2)*(cos(pi*xval/4000.0)**2)
-          enddo
-          enddo
+		  threshold = miny + 0.5*(maxy-miny)
+
+        do j = jb, je
+		    do i = ib, ie
+          if (yh(j) .ge. threshold) then
+            xval = dx * (i - ni / 3)
+            zs(i,j) = 4400.0 * exp(-(xval / 325000.0)**2) * (cos(pi * xval / 40000.0)**2)
+          else
+            zs(i,j) = 1.0
+          endif
+        enddo
+		    enddo
 
 !---------------
 !  itern = 3
