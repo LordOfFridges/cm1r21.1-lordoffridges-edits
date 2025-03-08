@@ -49,7 +49,7 @@
 
       integer :: i,j,k,irec,ii,jj
       real :: hh,aa,xval,xc,yc
-      real :: tem1,tem2,rr,angle,thresholdY,thresholdX
+      real :: tem1,tem2,rr,angle,thresholdY,thresholdX,oceanThreshold
       real, dimension(:,:), allocatable :: zs_all
 
 #ifdef MPI
@@ -79,18 +79,18 @@
 !---------------
 !  itern = 2
 !  Modified Schaer case  (eg, Klemp et al, 2003, MWR, pg 1229)
-!  This was designed for a domain about 4000km wide. LordOfFridges
+!  This modified case is designed for a domain 4000km wide.
 
         ELSEIF(itern.eq.2)THEN
 
-	thresholdY = miny + 0.5*(maxy-miny)
-	thresholdX = minx + 0.5*(maxx-minx)
+		  thresholdY = miny + 0.5*(maxy-miny)
+		  thresholdX = minx + 0.5*(maxx-minx)
 
         do j = jb, je
 	do i = ib, ie
           if ( (yh(j) .ge. thresholdY) .and. (xh(i) .le. thresholdX) ) then
             xval = dx * (i - ni / 4)
-            zs(i,j) = 4400.0 * exp(-(xval / 325000.0)**2) * (cos(pi * xval / 50000.0)**2)
+            zs(i,j) = (4400.0 * exp(-(xval / 325000.0)**2) * (cos(pi * xval / 50000.0)**2)) + 49.0
           else
             zs(i,j) = 50.0
           endif
@@ -103,13 +103,13 @@
 
         ELSEIF(itern.eq.3)THEN
 
-          hh =      500.0     ! max. height (m)
-          aa =    20000.0     ! half width (m)
+          hh =      4400.0     ! max. height (m)
+          aa =    50000.0     ! half width (m)
 
           do j=jb,je
           do i=ib,ie
-            xval = sqrt( (xh(i)-0.25*maxx)**2   &
-                        +(yh(j)-0.25*maxy)**2   &
+            xval = sqrt( (xh(i)-0.666666667*maxx)**2   &
+                        +(yh(j)-0.5*maxy)**2   &
                                              )
             zs(i,j)=hh*( (1.0+(xval/aa)**2 )**(-1.5) )
           enddo
@@ -135,6 +135,7 @@
 
             close(unit=73)
 
+		  
           ENDIF
 
 #ifdef MPI
@@ -157,7 +158,34 @@
           ! zs_all no longer needed ... deallocate:
           deallocate( zs_all )
 
-!----------------------------------------------------------
+!---------------
+!  itern = 5
+!  Modified Schaer case  (eg, Klemp et al, 2003, MWR, pg 1229)
+!  Same as itern=2, but the bottom third is at zh=0 for the ocean of initsfc=6
+
+        ELSEIF(itern.eq.5)THEN
+
+		  thresholdY = miny + 0.5*(maxy-miny)
+		  thresholdX = minx + 0.5*(maxx-minx)
+		  oceanThreshold = miny + 0.33333333333333*(maxy-miny)
+
+        do j = jb, je
+	do i = ib, ie
+          if ( (yh(j) .ge. thresholdY) .and. (xh(i) .le. thresholdX) ) then
+            xval = dx * (i - ni / 4)
+            zs(i,j) = (4400.0 * exp(-(xval / 325000.0)**2) * (cos(pi * xval / 50000.0)**2)) + 49.0
+          else
+	     if (yh(j) .ge. oceanThreshold) then
+	        zs(i,j) = 50.0
+	     else
+		zs(i,j) = 0.0
+	     endif
+          endif
+        enddo
+	enddo
+		
+
+!---------------
 
         ENDIF
 
