@@ -1,6 +1,7 @@
   MODULE radtrns3d_module
 
   use radlib3d_module
+  use input
 
   implicit none
 
@@ -2382,7 +2383,7 @@ SUBROUTINE zenangl(nx,ny,      hterain, cosz, cosss, a2dr2,             &
 !!!  CALL sfcslp( nx,ny, hterain, slpmag,slpdir, tem1,tem2,dx,dy )
 
 !!! ~~not considering map projections, for now:  GHB, 100720~~ This code is kinda buggy, but it works with the 4000km domain I've been using: LordOfFridges 030825
-!  IF ( mapproj == 0 ) THEN
+  IF ( mapproj .eq. 1 ) THEN
 
       total_lat_km = (ny * dx) * 2
       total_lon_km = (nx * dy) * 2
@@ -2397,15 +2398,14 @@ SUBROUTINE zenangl(nx,ny,      hterain, cosz, cosss, a2dr2,             &
         lonscl(i,j) = ctrlon + (total_lon_deg/2 + (i - 1) * dlon)
       END DO
     END DO
-!  ELSE
-!    DO j=1,ny
-!      ys = 0.5*(y(j)+y(j+1))
-!      DO i=1,nx
-!        xs = 0.5*(x(i)+x(i+1))
-!        CALL xytoll(1,1, xs,ys, latscl(i,j), lonscl(i,j))
-!      END DO
-!    END DO
-!  END IF
+  ELSE
+    DO j=1,ny
+      DO i=1,nx
+        latscl(i,j) = ctrlat
+        lonscl(i,j) = ctrlon
+      END DO
+    END DO
+  END IF
 !
 !-----------------------------------------------------------------------
 !
