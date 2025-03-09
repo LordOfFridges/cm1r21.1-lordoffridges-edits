@@ -2382,7 +2382,7 @@ SUBROUTINE zenangl(nx,ny,      hterain, cosz, cosss, a2dr2,             &
         slpdir = 0.
 !!!  CALL sfcslp( nx,ny, hterain, slpmag,slpdir, tem1,tem2,dx,dy )
 
-!!! ~~not considering map projections, for now:  GHB, 100720~~ This code is kinda buggy, but it works with the 4000km domain I've been using: LordOfFridges 030825
+!!! ~~not considering map projections, for now:  GHB, 100720~~ This code is kinda buggy. Best used with a domain size x<20000000, y<9200000. LordOfFridges
   IF ( mapproj .eq. 1 ) THEN
 
       total_lat_km = (ny * dx) * 2
