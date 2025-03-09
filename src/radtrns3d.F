@@ -2279,6 +2279,7 @@ SUBROUTINE zenangl(nx,ny,      hterain, cosz, cosss, a2dr2,             &
   real :: dtbig,curtim
   real :: ctrlat,ctrlon
   integer :: year,month,day,hour,minute,second,jday
+  real :: total_lat_km, total_lon_km, total_lat_deg, total_lon_deg, dlat, dlon
 
   REAL :: hterain(nx,ny)
 
@@ -2380,12 +2381,20 @@ SUBROUTINE zenangl(nx,ny,      hterain, cosz, cosss, a2dr2,             &
         slpdir = 0.
 !!!  CALL sfcslp( nx,ny, hterain, slpmag,slpdir, tem1,tem2,dx,dy )
 
-!!! not considering map projections, for now:  GHB, 100720
+!!! ~~not considering map projections, for now:  GHB, 100720~~ This code is kinda buggy, but it works with the 4000km domain I've been using: LordOfFridges 030825
 !  IF ( mapproj == 0 ) THEN
+
+      total_lat_km = (ny * dx) * 2
+      total_lon_km = (nx * dy) * 2
+      total_lat_deg = total_lat_km / 111.0
+      total_lon_deg = total_lon_km / 111.0
+      dlat = total_lat_deg / (ny)
+      dlon = total_lon_deg / (nx)
+	
     DO j=1,ny
       DO i=1,nx
-        latscl(i,j) = ctrlat
-        lonscl(i,j) = ctrlon
+        latscl(i,j) = ctrlat + (total_lat_deg/2 + (j - 1) * dlat)
+        lonscl(i,j) = ctrlon + (total_lon_deg/2 + (i - 1) * dlon)
       END DO
     END DO
 !  ELSE
