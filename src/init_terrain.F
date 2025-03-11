@@ -78,24 +78,16 @@
 
 !---------------
 !  itern = 2
-!  Modified Schaer case  (eg, Klemp et al, 2003, MWR, pg 1229)
-!  This modified case is designed for a domain 4000km wide.
+!  Schaer case  (eg, Klemp et al, 2003, MWR, pg 1229)
 
         ELSEIF(itern.eq.2)THEN
 
-		  thresholdY = miny + 0.5*(maxy-miny)
-		  thresholdX = minx + 0.5*(maxx-minx)
-
-        do j = jb, je
-	do i = ib, ie
-          if ( (yh(j) .ge. thresholdY) .and. (xh(i) .le. thresholdX) ) then
-            xval = dx * (i - ni / 4)
-            zs(i,j) = (4400.0 * exp(-(xval / 325000.0)**2) * (cos(pi * xval / 50000.0)**2)) + 49.0
-          else
-            zs(i,j) = 50.0
-          endif
-        enddo
-	enddo
+          do j=jb,je
+          do i=ib,ie
+            xval=dx*(i-ni/2)
+            zs(i,j)=250.0*exp(-(xval/5000.0)**2)*(cos(pi*xval/4000.0)**2)
+          enddo
+          enddo
 
 !---------------
 !  itern = 3
@@ -161,7 +153,7 @@
 !---------------
 !  itern = 5
 !  Modified Schaer case  (eg, Klemp et al, 2003, MWR, pg 1229)
-!  Same as itern=2, but the bottom third is at zh=0 for the ocean of initsfc=6
+!  The bottom third is at zh=0 for the ocean of initsfc=6
 
         ELSEIF(itern.eq.5)THEN
 
