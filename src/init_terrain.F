@@ -82,10 +82,14 @@
 
         ELSEIF(itern.eq.2)THEN
 
+	  hh = 250.0	! Max height in meters
+	  wf = 4000.0	! Wave frequency in meters(Lower resolutions with larger terrain may need higher numbers)
+	  aa = 5000.0	! Half width in meters
+
           do j=jb,je
           do i=ib,ie
             xval=dx*(i-ni/2)
-            zs(i,j)=250.0*exp(-(xval/5000.0)**2)*(cos(pi*xval/4000.0)**2)
+            zs(i,j)=hh*exp(-(xval/aa)**2)*(cos(pi*xval/wf)**2)
           enddo
           enddo
 
