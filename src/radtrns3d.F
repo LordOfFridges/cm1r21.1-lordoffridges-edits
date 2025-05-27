@@ -2382,16 +2382,16 @@ SUBROUTINE zenangl(nx,ny,      hterain, cosz, cosss, a2dr2,             &
         slpdir = 0.
 !!!  CALL sfcslp( nx,ny, hterain, slpmag,slpdir, tem1,tem2,dx,dy )
 
-!!! ~~not considering map projections, for now:  GHB, 100720~~ ~~This code is kinda buggy, but it works with the 4000km domain I've been using: LordOfFridges 030825.~~ Found out its limit. Best used with a domain size x<20000000, y<9200000. 
+!!! ~~not considering map projections, for now:  GHB, 100720~~ ~~This code is kinda buggy. Best used with a domain size x<20000000, y<9200000. 
   IF ( mapproj .eq. 1 ) THEN
 
-      total_lat_deg = (ny * dx) / 111.0
-      total_lon_deg = (nx * dy) / (111.0 * cos(ctrlat * 3.14159265358979323 / 180.0))
+      total_lat_deg = (ny * dy) / 111000.0
+      total_lon_deg = (nx * (dx * cos(ctrlat * 3.14159265359 / 180.0))) / 111000.0
 	
     DO j=1,ny
       DO i=1,nx
-        latscl(i,j) = (ctrlat + (total_lat_deg + j)) / total_lat_deg
-        lonscl(i,j) = (ctrlon + (total_lon_deg + i)) / total_lon_deg
+        latscl(i,j) = ctrlat - (total_lat_deg/2.0 + (j-1)*dy / 111000.0)
+        lonscl(i,j) = ctrlon - (total_lon_deg/2.0 + (i-1)*(dx * cos(ctrlat * 3.14159265359 / 180.0)) / 111000.0)
       END DO
     END DO
   ELSE
