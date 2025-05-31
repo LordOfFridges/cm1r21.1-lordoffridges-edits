@@ -2391,7 +2391,7 @@ SUBROUTINE zenangl(nx,ny,      hterain, cosz, cosss, a2dr2,             &
     DO j=1,ny
       DO i=1,nx
         latscl(i,j) = ctrlat - (total_lat_deg/2.0 + (j-1)*dy / 111000.0)
-        lonscl(i,j) = ctrlon - (total_lon_deg/2.0 + (i-1)*(dx * cos(ctrlat * 3.14159265359 / 180.0)) / 111000.0)
+        lonscl(i,j) = ctrlon + (total_lon_deg/2.0 + (i-1)*(dx * cos(ctrlat * 3.14159265359 / 180.0)) / 111000.0)
       END DO
     END DO
   ELSE
