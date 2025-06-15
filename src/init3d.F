@@ -1307,13 +1307,13 @@
 
         ! User-defined settings:
         Dmax     =  -1.0e-3     ! maximum divergence (s^{-1})
-        zdeep    =  2000.0      ! depth (m) of forced convergence
-        lamx     = 10000.0      ! Loftus et al lambda_x parameter
-        lamy     = 10000.0      ! Loftus at al lambda_y parameter
-        xcent    =     0.0      ! x-location (m)
-        ycent    =     0.0      ! y-location (m)
-        convtime =   900.0      ! time (s) at beginning of simulation over
-                                ! which convergence is applied
+        zdeep    = var8      ! depth (m) of forced convergence
+        lamx     = var4      ! Loftus et al lambda_x parameter
+        lamy     = var4      ! Loftus at al lambda_y parameter
+        xcent    = var1      ! x-location (m)
+        ycent    = var2      ! y-location (m)
+        convtime = var20     ! time (s) at beginning of simulation over
+                             ! which convergence is applied
 
         ! Don't change anything below here:
         convinit = 1
