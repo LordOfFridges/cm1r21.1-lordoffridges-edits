@@ -113,14 +113,15 @@
 
  &param11
  radopt  =        0,
- dtrad   =    300.0,
+ mapproj =        1,
+ dtrad   =    30.00,
  ctrlat  =    36.68,
  ctrlon  =   -98.35,
- year    =     2009,
- month   =        5,
+ year    =     2025,
+ month   =        6,
  day     =       15,
- hour    =       21,
- minute  =       38,
+ hour    =       00,
+ minute  =       00,
  second  =       00,
  /
 
@@ -188,26 +189,26 @@
  /
 
  &param8
- var1      =   0.0,
- var2      =   0.0,
- var3      =   0.0,
- var4      =   0.0,
- var5      =   0.0,
- var6      =   0.0,
- var7      =   0.0,
- var8      =   0.0,
- var9      =   0.0,
- var10     =   0.0,
- var11     =   0.0,
- var12     =   0.0,
- var13     =   0.0,
- var14     =   0.0,
- var15     =   0.0,
- var16     =   0.0,
- var17     =   0.0,
- var18     =   0.0,
- var19     =   0.0,
- var20     =   0.0,
+ var1      =   50000.0, ! Center X (These are shared across multiple init options)
+ var2      =   50000.0, ! Center Y
+ var3      =   2000.0,	! Center Height
+ var4      =   10000.0,	! Horizontal Radius
+ var5      =   3000.0,	! Vertical Radius
+ var6      =   5.0,		! Max Theta Pert.
+ var7      =   15000.0,	! Cold Pool Edge
+ var8      =   8000.0,	! Cold Pool Depth
+ var9      =  -12.0,	! Cold Pool Theta Pert.
+ var10     =   6.0,		! Num. Warm Bubbles
+ var11     =   10000.0,	! 1
+ var12     =   60000.0,	! 2
+ var13     =   110000.0,! 3
+ var14     =   160000.0,! 4
+ var15     =   210000.0,! 5
+ var16     =   260000.0,! 6
+ var17     =   1.0,		! Line Thermal Amplitude
+ var18     =   15.0,	! Updraft Nudging Speed
+ var19     =   900.0,	! Wind-Down Time
+ var20     =   1200.0,	! Forcing Stop Time
  /
 
  &param9
