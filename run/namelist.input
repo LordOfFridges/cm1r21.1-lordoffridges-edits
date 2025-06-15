@@ -113,7 +113,7 @@
 
  &param11
  radopt  =        0,
- mapproj =        1,
+ mapproj =        1, ! Very basic implementation, only affects radiaion
  dtrad   =    30.00,
  ctrlat  =    36.68,
  ctrlon  =   -98.35,
