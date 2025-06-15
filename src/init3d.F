@@ -458,7 +458,7 @@
         zc      =  var3  ! height of center of bubble above ground (m)
         bhrad   =  var4  ! horizontal radius of bubble (m)
         bvrad   =  var5  ! vertical radius of bubble (m)
-        bptpert =  var6  ! max potential temp perturbation(K)
+        bptpert =  var6  ! max potential temp perturbation (K)
 
         ! By default, CM1 sets qv=constant at a constant height level for 
         ! this value of iinit.  If you would rather have rh=constant at 
@@ -525,11 +525,11 @@
         if(dowr) write(outfile,*)
  
         nbub    =  var10     ! number of warm bubbles
-        ric     =  var11   ! center of bubble in x-direction (m)
-        zc      =  var12   ! height of center of bubble above ground (m)
-        bhrad   =  var13   ! horizontal radius of bubble (m)
-        bvrad   =  var14   ! vertical radius of bubble (m)
-        bptpert =  var15   ! max potential temp perturbation (K)
+        ric     =  var1   ! center of bubble in x-direction (m)
+        zc      =  var3   ! height of center of bubble above ground (m)
+        bhrad   =  var4   ! horizontal radius of bubble (m)
+        bvrad   =  var5   ! vertical radius of bubble (m)
+        bptpert =  var6   ! max potential temp perturbation (K)
 
         ! By default, CM1 sets qv=constant at a constant height level for 
         ! this value of iinit.  If you would rather have rh=constant at 
@@ -546,14 +546,12 @@
 
         do n=1,nbub
 
-          if(n.eq.1) rjc=  var16
-          if(n.eq.2) rjc=  var17
-          if(n.eq.3) rjc=  var18
-		  if(n.eq.4) rjc=  var19
-		  if(n.eq.5) rjc=  var20
-		  if(n.eq.6) rjc=  var21
-		  if(n.eq.7) rjc=  var22
-		  if(n.eq.8) rjc=  var23
+          if(n.eq.1) rjc= var11
+          if(n.eq.2) rjc= var12
+          if(n.eq.3) rjc= var13
+		  if(n.eq.4) rjc= var14
+		  if(n.eq.5) rjc= var15
+		  if(n.eq.6) rjc= var16
 
           if(dowr) write(outfile,*) '  ric,rjc=',n,ric,rjc
  
@@ -585,11 +583,11 @@
 
         ! parameters for dry counterpart bubble
 
-        ric      =      0.0       ! x-location of bubble center (m)
-        zc       =   2000.0       ! z-location of bubble center (m)
-        bhrad    =   2000.0       ! horizontal radius of bubble (m)
-        bvrad    =   2000.0       ! vertical radius of bubble (m)
-        bptpert  =      2.0       ! maximum potential temp. pert. (K)
+        ric      =   var1       ! x-location of bubble center (m)
+        zc       =   var3       ! z-location of bubble center (m)
+        bhrad    =   var4       ! horizontal radius of bubble (m)
+        bvrad    =   var5       ! vertical radius of bubble (m)
+        bptpert  =   var6       ! maximum potential temp. pert. (K)
 
         do k=kb,ke
         do j=jb,je
@@ -662,12 +660,12 @@
         if(dowr) write(outfile,*) '  Cold pool (elipse, following Straka)'
         if(dowr) write(outfile,*)
 
-        ric     =     0.0
-        rjc     =     0.0
-        zc      =  3000.0
-        bhrad   =  4000.0
-        bvrad   =  2000.0
-        bptpert =   -15.0
+        ric     =  var1
+        rjc     =  var2
+        zc      =  var3
+        bhrad   =  var4
+        bvrad   =  var5
+        bptpert =  var9
 
         do k=kb,ke
         do j=jb,je
@@ -713,28 +711,28 @@
         ! type of analytic vortex:
         !    1 = Rotunno and Emanuel (1987)
         !    2 = modified Rankine vortex  ( this is now default, starting in cm1r20.1 )
-        tctype  =  var24
+        tctype  =  2
 
 
 
         !      Default analytic vortex since cm1r20.1:
         ! for tctype=2, parameters for modified Rankine vortex:
-        vmax =   var25         ! V max (m/s)
-        rm1  =   var26       ! 1st radius (m): location of Vmax
-        rm2  =   var27       ! 2nd radius (m): max radius for specified radial decay rate
-        rm3  =   var28       ! 3rd radius (m): location where V=0
-        rdc  =   var29         ! radial decay rate (nondimensional) between rm1 and rm2
+        vmax =   15.0         ! V max (m/s)
+        rm1  =  75000.0       ! 1st radius (m): location of Vmax
+        rm2  = 200000.0       ! 2nd radius (m): max radius for specified radial decay rate
+        rm3  = 500000.0       ! 3rd radius (m): location where V=0
+        rdc  =  -0.35         ! radial decay rate (nondimensional) between rm1 and rm2
                               !   ( where v = Vmax (r/rm1)^rdc )
 
 
         ! for tctype=1, parameters for Rotunno-Emanuel (1987) analytic vortex:
-        r0_re87     =    var30
-        rmax_re87   =    var31
-        vmax_re87   =    var32
+        r0_re87     =   412500.0
+        rmax_re87   =    82500.0
+        vmax_re87   =       15.0
 
 
         ! for all tctypes:
-        zdd         =    var33     ! height (ASL) where V=0
+        zdd         =    15000.0     ! height (ASL) where V=0
 
 
         !  170502, experimental code for moist initial vortex:
@@ -1265,11 +1263,11 @@
         if(dowr) write(outfile,*) '  Warm bubble'
         if(dowr) write(outfile,*)
 
-        ric     =   var34  ! center of bubble in x-direction (m)
-        zc      =   var35  ! height of center of bubble above ground (m)
-        bhrad   =   var36  ! horizontal radius of bubble (m)
-        bvrad   =   var37  ! vertical radius of bubble (m)
-        bptpert =   var38  ! max potential temp perturbation (K)
+        ric     =  var1  ! center of bubble in x-direction (m)
+        zc      =  var3  ! height of center of bubble above ground (m)
+        bhrad   =  var4  ! horizontal radius of bubble (m)
+        bvrad   =  var5  ! vertical radius of bubble (m)
+        bptpert =  var6  ! max potential temp perturbation (K)
 
         ! By default, CM1 sets qv=constant at a constant height level for 
         ! this value of iinit.  If you would rather have rh=constant at 
@@ -1277,7 +1275,7 @@
         maintain_rh = .false.
 
         ! amplitude of random perturbations:
-        amplitude = var39
+        amplitude = var17
 
         do k=1,nk
         do jj=1,ny
@@ -1309,12 +1307,12 @@
 
         ! User-defined settings:
         Dmax     =  -1.0e-3     ! maximum divergence (s^{-1})
-        zdeep    =  var40      ! depth (m) of forced convergence
+        zdeep    =  2000.0      ! depth (m) of forced convergence
         lamx     = 10000.0      ! Loftus et al lambda_x parameter
         lamy     = 10000.0      ! Loftus at al lambda_y parameter
-        xcent    =  var41      ! x-location (m)
-        ycent    =  var42      ! y-location (m)
-        convtime =  var43      ! time (s) at beginning of simulation over
+        xcent    =     0.0      ! x-location (m)
+        ycent    =     0.0      ! y-location (m)
+        convtime =   900.0      ! time (s) at beginning of simulation over
                                 ! which convergence is applied
 
         ! Don't change anything below here:
@@ -1338,12 +1336,12 @@
 
       ELSEIF(iinit.eq.10)THEN
 
-        xc_uforce     =  var44    ! x_c (m), center point of forcing in x
-        xr_uforce     =  var45                   ! x_r (m), radius of forcing in x
-        zr_uforce     =  var46                   ! z_r (m), radius of forcing in z
-        alpha_uforce  =  var47                     ! alpha (m/s/s), max intensity of forcing
-        t1_uforce     =  var48                    ! time (s) to start ramping down u-forcing
-        t2_uforce     =  var49                    ! time (s) to turn off u-forcing
+        xc_uforce     =  var1    ! x_c (m), center point of forcing in x
+        xr_uforce     =  var4                   ! x_r (m), radius of forcing in x
+        zr_uforce     =  var4                   ! z_r (m), radius of forcing in z
+        alpha_uforce  =    0.1                     ! alpha (m/s/s), max intensity of forcing
+        t1_uforce     =  var19                    ! time (s) to start ramping down u-forcing
+        t2_uforce     =  var20                    ! time (s) to turn off u-forcing
 
 !------------------------------------------------------------------
 !  iinit = 11
@@ -1374,20 +1372,20 @@
 
       ELSEIF(iinit.eq.12)THEN
 
-        xc_wnudge     =  var50                   ! x_c (m), center point of nudging in x
-        xr_wnudge     =  var51                   ! x_r (m), radius of nudging in x
+        xc_wnudge     =  var1                   ! x_c (m), center point of nudging in x
+        xr_wnudge     =  var4                   ! x_r (m), radius of nudging in x
 
-        yc_wnudge     =  var52                   ! y_c (m), center point of nudging in y
-        yr_wnudge     =  var53                   ! y_r (m), radius of nudging in y
+        yc_wnudge     =  var2                   ! y_c (m), center point of nudging in y
+        yr_wnudge     =  var4                   ! y_r (m), radius of nudging in y
 
-        zc_wnudge     =  var54                   ! z_c (m), center point of nudging in z
-        zr_wnudge     =  var55                   ! z_r (m), radius of nudging in z
+        zc_wnudge     =   var3                   ! z_c (m), center point of nudging in z
+        zr_wnudge     =   var5                   ! z_r (m), radius of nudging in z
 
         alpha_wnudge  =      0.5                   ! alpha (1/s), inverse e-folding time for nudging
-        wmax_wnudge   =  var56                   ! w_max (m/s), max value of w to nudge towards
+        wmax_wnudge   =     var18                   ! w_max (m/s), max value of w to nudge towards
 
-        t1_wnudge     =  var57                   ! time (s) to start ramping down nudging
-        t2_wnudge     =  var58                   ! time (s) to turn off nudging
+        t1_wnudge     =    var19                   ! time (s) to start ramping down nudging
+        t2_wnudge     =   var20                   ! time (s) to turn off nudging
 
 
         ! Don't change anything below here:
@@ -1402,13 +1400,13 @@
 
       ELSEIF(iinit.eq.13)THEN
 
-        bvrad = 1000.0
+        bvrad = var5
 
         do k=1,nk
         do j=1,nj
         do i=1,ni
           if( zh(i,j,k).lt.bvrad )then
-            tha(i,j,k)=1.0*sin(2.0*pi*xh(i)/(0.25*(maxx-minx)))  &
+            tha(i,j,k)=var6*sin(2.0*pi*xh(i)/(0.25*(maxx-minx)))  &
                           *sin(2.0*pi*yh(j)/(0.25*(maxy-miny)))  &
                           *sin(2.0*pi*zh(i,j,k)/(2.0*bvrad))
           endif

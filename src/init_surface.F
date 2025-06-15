@@ -32,7 +32,7 @@
       real, intent(inout), dimension(ibmyj:iemyj,jbmyj:jemyj) :: z0base
 
       integer :: i,j,k,l
-      real :: x1,x2,xcoast,upnorth,downsouth
+      real :: x1,x2,xcoast
 
 !-----------------------------------------------------------------------
 !  BEGIN user settings
@@ -116,7 +116,7 @@
         do i=ib,ie
           if( xh(i) .lt. xcoast )then
             xland(i,j) = 1.0
-            lu_index(i,j) = 5
+            lu_index(i,j) = 18
           else
             xland(i,j) = 2.0
             lu_index(i,j) = 16
@@ -125,74 +125,21 @@
         enddo
 
 !----------
-!  if initsfc is 5: Cold north, land west, ocean east
+!  if initsfc is not 1,2:
 
-      ELSEIF( initsfc.eq.5 )THEN
+      ELSEIF( initsfc.ne.1 .and. initsfc.ne.2 )THEN
 
-        xcoast = minx + 0.5*(maxx-minx)
-		upnorth = miny + 0.8*(maxy-miny)
+        ! build your own initial conditions here:
 
-        do j=jb,je
-        do i=ib,ie
-		  if(yh(j) .ge. borninthenorth)then
-			xland(i,j)=1.0
-			lu_index(i,j)=24
-			tsk(i,j)=273.15
-			tmn(i,j)=266.483
-         else
-          if( xh(i) .lt. xcoast )then
-            xland(i,j) = 1.0
-            lu_index(i,j) = 7
-			tsk(i,j)=297.039
-			tmn(i,j)=294.261
-          else
-            xland(i,j) = 2.0
-            lu_index(i,j) = 16
-			tsk(i,j)=294.261
-			tmn(i,j)=291.483
-		  endif
-		 endif
-        enddo
-        enddo
+!!!        do j=jb,je
+!!!        do i=ib,ie
+!!!          tsk(i,j)      = ?
+!!!          tmn(i,j)      = ?
+!!!          xland(i,j)    = ?
+!!!          lu_index(i,j) = ?
+!!!        enddo
+!!!        enddo
 
-!----------
-!  CONUS-type surface setup: Polar, north; Warm Ocean, south; Desert, middle-western third; Grassland, rest of area.
-
-      ELSEIF( initsfc.eq.6 )THEN
-
-		upnorth = miny + 0.66666666666666*(maxy-miny)
-		downsouth = miny + 0.33333333333333*(maxy-miny)
-		xcoast = minx + 0.33333333333333*(maxx-minx)
-
-        do j=jb,je
-        do i=ib,ie
-		  if(yh(j) .ge. borninthenorth)then
-			xland(i,j)=1.0
-			lu_index(i,j)=24
-			tsk(i,j)=255.372
-			tmn(i,j)=238.706
-          else if( yh(j) .le. borninthesouth ) then
-			xland(i,j)=2.0
-			lu_index(i,j)=16
-			tsk(i,j)=291.483
-			tmn(i,j)=289.224
-          else
-			if ( xh(i) .le. xcoast )then
-				xland(i,j)=1.0
-				lu_index(i,j)=27
-				tsk(i,j)=302.594
-				tmn(i,j)=299.817
-			else
-				xland(i,j)=1.0
-				lu_index(i,j)=7
-				tsk(i,j)=294.261
-				tmn(i,j)=291.483
-			endif
-		  endif
-        enddo
-        enddo
-		
-		
 !----------
 
       ENDIF     ! endif for initsfc options

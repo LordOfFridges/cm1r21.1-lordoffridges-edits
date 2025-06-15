@@ -2496,7 +2496,7 @@
           vval =  0.0
         else
           ! default:
-          uval = 15.0
+          uval = 10.0
           vval =  0.0
         endif
 

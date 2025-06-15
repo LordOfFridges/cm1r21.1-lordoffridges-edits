@@ -19,7 +19,7 @@
 !cc   Do not change anything below here   cccccccccccccccccccccccccccccc
 !cc                                       cccccccccccccccccccccccccccccc
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-!ccccccccccccccccccccccccccccccccccccccccccccccccccccCcccccccccccccccccc
+!ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 !-----------------------------------------------------------------------
 
       integer ierr
@@ -133,7 +133,7 @@
               stat_cloud,stat_sfcprs,stat_wsp,stat_cfl,stat_vort,             &
               stat_tmass,stat_tmois,stat_qmass,stat_tenerg,stat_mo,stat_tmf,  &
               stat_pcn,stat_qsrc,stat_out,prcl_out,                           &
-              radopt,year,month,day,hour,minute,second,jday,                  &
+              radopt,mapproj,year,month,day,hour,minute,second,jday,          &
               isfcflx,sfcmodel,oceanmodel,ipbl,initsfc,lu0,season,            &
               cecd,pertflx,isftcflx,iz0tlnd,convinit,wnudge,maxk,             &
               set_znt,set_flx,set_ust,ramp_sgs,t2p_avg,                       &
@@ -181,11 +181,7 @@
            sfctheta,thec_mb,qt_mb,smeps,tsmall,qsmall,cflmax,ksmax,           &
            var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,                &
            var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,       &
-		   var21,var22,var23,var24,var25,var26,var27,var28,var29,var30,       &
-		   var31,var32,var33,var34,var35,var36,var37,var38,var39,var40,       &
-		   var41,var42,var43,var44,var45,var46,var47,var48,var49,var50,       &
-		   var51,var52,var53,var54,var55,var56,var57,var58,                   &
-           dtrad,mapproj,ctrlat,ctrlon,                                               &
+           dtrad,ctrlat,ctrlon,                                               &
            tsk0,tmn0,xland0,oml_hml0,oml_gamma,                               &
            dmax,zdeep,lamx,lamy,xcent,ycent,aconv,convtime,                   &
            xc_uforce,xr_uforce,zr_uforce,alpha_uforce,t1_uforce,t2_uforce,    &
@@ -287,11 +283,7 @@
       namelist /param6/ stretch_z,ztop,str_bot,str_top,dz_bot,dz_top
       namelist /param7/ bc_temp,ptc_top,ptc_bot,viscosity,pr_num
       namelist /param8/ var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,   &
-                        var11,var12,var13,var14,var15,var16,var17,var18,var19,var20,	&
-						var21,var22,var23,var24,var25,var26,var27,var28,var29,var30,	&
-						var31,var32,var33,var34,var35,var36,var37,var38,var39,var40,	&
-						var41,var42,var43,var44,var45,var46,var47,var48,var49,var50,	&
-						var51,var52,var53,var54,var55,var56,var57,var58
+                        var11,var12,var13,var14,var15,var16,var17,var18,var19,var20
       namelist /param9/                                                       &
               output_format,output_filetype,                                  &
               output_interp,                                                  &
@@ -326,7 +318,7 @@
               stat_tmass,stat_tmois,stat_qmass,stat_tenerg,stat_mo,stat_tmf,  &
               stat_pcn,stat_qsrc
       namelist /param11/                                                      &
-              radopt,dtrad,mapproj,ctrlat,ctrlon,year,month,day,hour,minute,second
+              radopt,mapproj,dtrad,ctrlat,ctrlon,year,month,day,hour,minute,second
       namelist /param12/                                                      &
               isfcflx,sfcmodel,oceanmodel,initsfc,                            &
               tsk0,tmn0,xland0,lu0,season,                                    &

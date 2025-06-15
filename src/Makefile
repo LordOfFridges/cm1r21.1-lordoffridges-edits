@@ -8,10 +8,10 @@
 #              (NOTE: Don't change lines 3 and 4!)
 #  Note:  you may need to remove -DNCFPLUS if you use an old version of netcdf
 #
-#OUTPUTINC = -I/usr/local/include
-#OUTPUTLIB = -L/usr/local/lib
-#OUTPUTOPT = -DNETCDF -DNCFPLUS
-#LINKOPTS  = -lnetcdf -lnetcdff
+OUTPUTINC = -I/usr/include
+OUTPUTLIB = -L/usr/lib/x86_64-linux-gnu
+OUTPUTOPT = -DNETCDF -DNCFPLUS
+LINKOPTS = -lnetcdf -lnetcdff
 #-----------------------------------------------------------------------------
 
 
@@ -49,7 +49,7 @@
 #-----------------------------------------------------------------------------
 #  single processor, NVIDIA (formerly Portland Group) compiler
 #FC   = nvfortran
-#OPTS = -Mfree -O3 -Ktrap=none -Mautoinline -Minline=reshape
+#OPTS = -Mfree -O2 -Ktrap=none -Mautoinline -Minline=reshape
 #CPP  = cpp -C -P -traditional -Wno-invalid-pp-token -ffreestanding
 #-----------------------------------------------------------------------------
 #  multiple processors, distributed memory (MPI), NVIDIA (formerly Portland Group) compiler
@@ -60,7 +60,7 @@
 #-----------------------------------------------------------------------------
 #  multiple processors, shared memory (OpenMP), NVIDIA (formerly Portland Group) compiler
 #FC   = nvfortran
-#OPTS = -Mfree -O3 -Ktrap=none -Mautoinline -Minline=reshape -mp
+#OPTS = -Mfree -O2 -Ktrap=none -Mautoinline -Minline=reshape -mp
 #CPP  = cpp -C -P -traditional -Wno-invalid-pp-token -ffreestanding
 #OMP  = -DOPENMP
 #-----------------------------------------------------------------------------
@@ -80,6 +80,12 @@
 #OPTS = -ffree-form -ffree-line-length-none -O2 -finline-functions -fopenmp
 #CPP  = cpp -C -P -traditional -Wno-invalid-pp-token -ffreestanding
 #OMP  = -DOPENMP
+#-----------------------------------------------------------------------------
+#  Ryzen 7 5800X/XT 8-core/16-thread, shared memory (OpenMP), GNU compiler MADE FOR SPEED, NOT ACCURACY
+FC   = gfortran
+OPTS = -ffree-form -ffree-line-length-none -O3 -march=znver3 -funroll-loops -fopenmp -ftree-vectorize -ftree-parallelize-loops -fno-math-errno
+CPP  = cpp -C -P -traditional -Wno-invalid-pp-token -ffreestanding
+OMP  = -DOPENMP
 #-----------------------------------------------------------------------------
 #  single processor, Cray fortran compiler
 #FC   = ftn
