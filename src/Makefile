@@ -8,10 +8,10 @@
 #              (NOTE: Don't change lines 3 and 4!)
 #  Note:  you may need to remove -DNCFPLUS if you use an old version of netcdf
 #
-OUTPUTINC = -I/usr/include
-OUTPUTLIB = -L/usr/lib/x86_64-linux-gnu
-OUTPUTOPT = -DNETCDF -DNCFPLUS
-LINKOPTS = -lnetcdf -lnetcdff
+#OUTPUTINC = -I/usr/include
+#OUTPUTLIB = -L/usr/lib/x86_64-linux-gnu
+#OUTPUTOPT = -DNETCDF -DNCFPLUS
+#LINKOPTS = -lnetcdf -lnetcdff
 #-----------------------------------------------------------------------------
 
 
@@ -82,10 +82,10 @@ LINKOPTS = -lnetcdf -lnetcdff
 #OMP  = -DOPENMP
 #-----------------------------------------------------------------------------
 #  Ryzen 7 5800X/XT 8-core/16-thread, shared memory (OpenMP), GNU compiler MADE FOR SPEED, NOT ACCURACY
-FC   = gfortran
-OPTS = -ffree-form -ffree-line-length-none -O3 -march=znver3 -funroll-loops -fopenmp -ftree-vectorize -ftree-parallelize-loops -fno-math-errno
-CPP  = cpp -C -P -traditional -Wno-invalid-pp-token -ffreestanding
-OMP  = -DOPENMP
+#FC   = gfortran
+#OPTS = -ffree-form -ffree-line-length-none -O3 -march=znver3 -funroll-loops -fopenmp -ftree-vectorize -ftree-parallelize-loops -fno-math-errno
+#CPP  = cpp -C -P -traditional -Wno-invalid-pp-token -ffreestanding
+#OMP  = -DOPENMP
 #-----------------------------------------------------------------------------
 #  single processor, Cray fortran compiler
 #FC   = ftn
